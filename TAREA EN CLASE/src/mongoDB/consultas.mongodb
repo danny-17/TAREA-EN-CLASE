@@ -1,0 +1,47 @@
+/* Mostrar todos los documentos de los personajes que tengan
+el nivel de poder superior a 800 */
+use('bd_dagon_ball')
+db.data.find({"Power_Level": {$gt: 800}}).limit(100).toArray();
+
+/* Mostrar todos los documentos que correspondan al personaje 
+Goku */
+use('bd_dagon_ball')
+db.data.find({"Carácter": "Goku"}).limit(100).toArray();
+
+/* Mostrar todos los personajes que su nivel de poder sea mayor
+a 800 y menores o iguales a 1200 */
+use('bd_dagon_ball')
+db.data.find({$and: [{"Power_Level": {$gt: 800}}, {"Power_Level": {$lte: 1200}}]}).limit(100).toArray();
+
+/* Mostrar los datos de los personajes que sean Bulma y Puar */
+use('bd_dagon_ball')
+db.data.find({$or: [{"Carácter": "Bulma"}, {"Carácter": "Puar"}]}).limit(100).toArray();
+
+/* Mostrar los documentos que pertenecan a la Saga Sayayin */
+use('bd_dagon_ball')
+db.data.find({"Saga_or_Movie": "Saiyan Saga"}).limit(100).toArray();
+
+/* Mostrar los documentos que pertenescan al personaje Krillin */
+use('bd_dagon_ball')
+db.data.find({"Carácter": "Krillin"}).limit(100).toArray();
+
+/* Mostrar los documentos de los personajes con nivel de poder mayor a 150
+y pertenesca a la Saga Sayayin */
+use('bd_dagon_ball')
+db.data.find({$and: [{"Power_Level": {$gt: 150}}, {"Saga_or_Movie": "Saiyan Saga"}]}).limit(100).toArray();
+
+/* Mostrar todos lod documentos que pertenesca a Dragon_Ball_Series */
+use('bd_dagon_ball')
+db.data.find({"Dragon_Ball_Series": "Dragon_Ball_Series"}).limit(100).toArray();
+
+/* Mostrar al personaje mas fuerte de todos */
+use('bd_dagon_ball')
+db.data.find({},{
+    '_id':0
+}).sort({"Power_Level":-1}).limit(1);
+
+/* Mostrar al personaje mas debil de todos */
+use('bd_dagon_ball')
+db.data.find({},{
+    '_id':0
+}).sort({"Power_Level":1}).limit(1);
